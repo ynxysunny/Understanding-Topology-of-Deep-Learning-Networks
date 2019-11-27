@@ -6,6 +6,22 @@ Created on Wed Nov 13 11:44:08 2019
 @author: Yun
 
 CNN on MNIST
+Architecture:
+    Conv layer 1:
+        3x3x64 filters
+        ReLU
+        2x2 max-pooling
+    Conv layer 2:
+        3x3x8 filters
+        ReLU
+        2x2 max-pooling
+    FC layer:
+        512 nodes
+        ReLU
+    Readout:
+        10 nodes
+        Softmax, Cross Entropy
+        Dropout 0.5, ADAM
 """
 from __future__ import print_function
 import numpy as np
