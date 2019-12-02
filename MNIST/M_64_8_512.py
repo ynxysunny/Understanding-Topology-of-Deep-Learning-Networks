@@ -71,9 +71,9 @@ for num_model in range(num_models):
     model = Sequential()
     model.add(Conv2D(64, kernel_size=(3, 3),
                  activation='relu',
-                 input_shape=input_shape, name='conv'))
+                 input_shape=input_shape, name='conv1'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Conv2D(8, (3, 3), activation='relu'))
+    model.add(Conv2D(8, (3, 3), activation='relu', name='conv2'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Flatten())
     model.add(Dense(512, activation='relu'))
@@ -93,12 +93,7 @@ for num_model in range(num_models):
     print('Test loss:', score[0])
     print('Test accuracy:', score[1])
 
-    conv_layer = model.get_layer('conv')
-    w = conv_layer.get_weights()[0]
-    f = open('weights_64_8_512.csv', 'ab')
-    for i in range(w.shape[-1]):
-        filt = w[:,:,:,i].flatten('C').reshape((1,-1))
-        np.savetxt(f, filt, delimiter=",")
-    f.close()
+    model.save(f"MNIST_trained_models_64_8_512/model_{num_model}.h5")
+    del model
     print('========================finished==================================')
     print()
