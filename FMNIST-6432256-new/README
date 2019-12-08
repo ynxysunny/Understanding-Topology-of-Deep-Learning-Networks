@@ -1,0 +1,3 @@
+We trained 100 models on Fashion MNIST with 3 convolutional layers and a few dense layers. The weights are saved in the weights folder. 
+FMNIST_6432256_train.py gives the code for training these 100 models.
+FMNIST_6432256_mappers_rips.py gives the code for generating mapper visualizations and persistent diagrams for the weights of the first convolutional layer (after preprocessing). 
